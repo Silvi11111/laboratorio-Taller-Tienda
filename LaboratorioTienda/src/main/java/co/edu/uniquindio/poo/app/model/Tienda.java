@@ -66,16 +66,27 @@ public class Tienda {
         return listaFacturas.stream().filter(f -> f.codigo().equals(codigo)).findFirst();
     }
 
+    //calcular el valor total de la factura
+    public double calcularTotalFactura(Factura factura) {
+        double total = 0;
+
+        for (DetalleFactura detalle : factura.listaDetallesFactura()) {
+            total += detalle.getSubTotal() * detalle.getCantidadComprada();
+        }
+
+        return total;
+    }
+
     //1. Obtener los productos con una cantidad disponible mayor igual a 10
-    public List<String> obtenerProductoDisponible() {
-        List<String> productos = new ArrayList<>();
+    public List<Producto> obtenerProductoDisponible() {
+        List<Producto> productoMayor10 = new ArrayList<>();
 
         for (Producto producto : listaProductos.values()) {
             if (producto.getCantidadDisponible() >= 10) {
-                productos.add(producto.getNombre());
+                productoMayor10.add(producto);
             }
         }
 
-        return productos;
+        return productoMayor10;
     }
 }
