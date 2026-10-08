@@ -52,5 +52,30 @@ public class Tienda {
                 .filter(cliente -> cliente.getDocumentoIdentidad().equals(documentoIdentidad))
                 .findFirst();
     }
+    public Factura buscarFactura(String codigo){
 
+        for (Factura factura : listaFacturas){
+            if(factura.codigo().equals(codigo)){
+                return factura;
+            }
+        }
+        return null;
+    }
+
+    public Optional<Factura> obtenerFactura(String codigo) {
+        return listaFacturas.stream().filter(f -> f.codigo().equals(codigo)).findFirst();
+    }
+
+    //1. Obtener los productos con una cantidad disponible mayor igual a 10
+    public List<String> obtenerProductoDisponible() {
+        List<String> productos = new ArrayList<>();
+
+        for (Producto producto : listaProductos.values()) {
+            if (producto.getCantidadDisponible() >= 10) {
+                productos.add(producto.getNombre());
+            }
+        }
+
+        return productos;
+    }
 }
