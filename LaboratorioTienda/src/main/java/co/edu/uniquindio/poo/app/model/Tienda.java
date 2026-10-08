@@ -119,4 +119,17 @@ public class Tienda {
         }
         return listaClientes;
     }
+
+    //4. obtener las facturas que tengan un cliente donde su nombre empieze por R
+    public List<Factura> buscarClienteConletraR(){
+        List<Factura> listaFactura=new ArrayList<>();
+        for (Factura facturaAux : listaFacturas) {
+            String nombre = facturaAux.cliente().getNombreCompleto();
+            if (nombre.charAt(0)=='R') {
+                listaFactura.add(facturaAux);
+            }
+        }
+
+        return listaFactura;
+    }
 }
