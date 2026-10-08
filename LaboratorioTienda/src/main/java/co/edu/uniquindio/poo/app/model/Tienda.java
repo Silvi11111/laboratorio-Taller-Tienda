@@ -2,6 +2,8 @@ package co.edu.uniquindio.poo.app.model;
 
 import java.util.*;
 
+import java.time.LocalDate;
+
 public class Tienda {
 
     private final String nombre;
@@ -103,5 +105,18 @@ public class Tienda {
         }
 
         return codigos;
+    }
+    //3. obtener la lista de clientes que hayan comprado el 07/10/2026
+
+    public List<Cliente> obtenerListaCliente() {
+        List<Cliente> listaClientes=new ArrayList<>();
+        LocalDate fechaConsultada=LocalDate.of(2026,10,7);
+
+        for (Factura facturaAux:listaFacturas){
+            if (facturaAux.fecha().isEqual(fechaConsultada){
+                listaClientes.add(facturaAux.cliente());
+            }
+        }
+        return listaClientes;
     }
 }
