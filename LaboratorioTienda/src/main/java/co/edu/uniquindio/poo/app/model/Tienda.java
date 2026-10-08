@@ -10,10 +10,10 @@ public class Tienda {
 
     private final ArrayList<Cliente> listaClientes = new ArrayList<>();
     private final List<Factura> listaFacturas = new LinkedList<>();
-    private Map<String,Producto> listaProductos = new HashMap<>();
+    private Map<String, Producto> listaProductos = new HashMap<>();
 
 
-    public Tienda(String nombre, String nit,String telefono){
+    public Tienda(String nombre, String nit, String telefono) {
         this.nombre = nombre;
         this.nit = nit;
         this.telefono = telefono;
@@ -45,6 +45,7 @@ public class Tienda {
                     return "El cliente fue registrado exitosamente";
                 });
     }
+
     // Cambiar if(clienteEncontrado == null){ por un Optional
     // hacer el metodo buscar cliente usando un optional
     public Optional<Cliente> buscarCliente(String documentoIdentidad) {
@@ -52,10 +53,11 @@ public class Tienda {
                 .filter(cliente -> cliente.getDocumentoIdentidad().equals(documentoIdentidad))
                 .findFirst();
     }
-    public Factura buscarFactura(String codigo){
 
-        for (Factura factura : listaFacturas){
-            if(factura.codigo().equals(codigo)){
+    public Factura buscarFactura(String codigo) {
+
+        for (Factura factura : listaFacturas) {
+            if (factura.codigo().equals(codigo)) {
                 return factura;
             }
         }
@@ -78,15 +80,28 @@ public class Tienda {
     }
 
     //1. Obtener los productos con una cantidad disponible mayor igual a 10
-    public List<Producto> obtenerProductoDisponible() {
-        List<Producto> productoMayor10 = new ArrayList<>();
+    public List<Producto> obtenerProductoMayorA10() {
+        List<Producto> productosMayor10 = new ArrayList<>();
 
         for (Producto producto : listaProductos.values()) {
             if (producto.getCantidadDisponible() >= 10) {
-                productoMayor10.add(producto);
+                productosMayor10.add(producto);
             }
         }
 
-        return productoMayor10;
+        return productosMayor10;
+    }
+
+    //2. Obtener los codigos de los productos con una cantidad disponible mayor igual a 10 y menor a 50
+    public List<String> obtenerCodigosProductos() {
+        List<String> codigos = new ArrayList<>();
+
+        for (Producto producto : listaProductos.values()) {
+            if (producto.getCantidadDisponible() >= 10 && producto.getCantidadDisponible() < 50) {
+                codigos.add(producto.getCodigo());
+            }
+        }
+
+        return codigos;
     }
 }
