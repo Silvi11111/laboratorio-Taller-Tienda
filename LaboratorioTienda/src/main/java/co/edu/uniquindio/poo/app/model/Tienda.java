@@ -109,11 +109,11 @@ public class Tienda {
     //3. obtener la lista de clientes que hayan comprado el 07/10/2026
 
     public List<Cliente> obtenerListaCliente() {
-        List<Cliente> listaClientes=new ArrayList<>();
-        LocalDate fechaConsultada=LocalDate.of(2026,10,7);
+        List<Cliente> listaClientes = new ArrayList<>();
+        LocalDate fechaConsultada = LocalDate.of(2026, 10, 7);
 
-        for (Factura facturaAux:listaFacturas){
-            if (facturaAux.fecha().isEqual(fechaConsultada)){
+        for (Factura facturaAux : listaFacturas) {
+            if (facturaAux.fecha().isEqual(fechaConsultada)) {
                 listaClientes.add(facturaAux.cliente());
             }
         }
@@ -121,11 +121,11 @@ public class Tienda {
     }
 
     //4. obtener las facturas que tengan un cliente donde su nombre empieze por R
-    public List<Factura> buscarClienteConletraR(){
-        List<Factura> listaFactura=new ArrayList<>();
+    public List<Factura> buscarClienteConletraR() {
+        List<Factura> listaFactura = new ArrayList<>();
         for (Factura facturaAux : listaFacturas) {
             String nombre = facturaAux.cliente().getNombreCompleto();
-            if (nombre.charAt(0)=='R') {
+            if (nombre.charAt(0) == 'R') {
                 listaFactura.add(facturaAux);
             }
         }
@@ -134,7 +134,7 @@ public class Tienda {
     }
 
     //punto 5:Obtener las facturas donde se haya comprado un celular de marca Iphone 16 pro max
-    public List<Factura> obtenerFacturaCelular(){
+    public List<Factura> obtenerFacturaCelular() {
         List<Factura> resultado = new ArrayList<>();
 
         for (Factura factura : this.listaFacturas) {
@@ -146,11 +146,11 @@ public class Tienda {
     }
 
     //punto 6:Obtener las facturas que tenga un cliente donde su nombre sea juan y haya comprado un celular de marca Iphone 16 pro max
-    public List<Factura> obtenerFacturaCelularNombre(){
+    public List<Factura> obtenerFacturaCelularNombre() {
         List<Factura> resultado = new ArrayList<>();
 
         for (Factura factura : this.listaFacturas) {
-            if (factura.esNombreClienteYTieneIphone(factura.cliente().getNombreCompleto())){
+            if (factura.esNombreClienteYTieneIphone(factura.cliente().getNombreCompleto())) {
                 resultado.add(factura);
             }
         }
@@ -158,7 +158,7 @@ public class Tienda {
     }
 
     // Punto 7: Implementar un método que reciba una categoría  y retorne todos los productos registrados que pertenezcan a ella.
-    public List<Producto> obtenerProductosCategoria(){
+    public List<Producto> obtenerProductosCategoria() {
         List<Producto> filtrados = new ArrayList<>();
 
         for (Producto producto : listaProductos.values()) {
@@ -169,10 +169,19 @@ public class Tienda {
 
         return filtrados;
     }
-    }
 
     //punto 8 : Implementar un método que reciba un precio mínimo y un precio máximo, y retorne los productos cuyo precio se encuentre dentro de ese rango, incluyendo ambos límites.
+public List<Producto> rangoPrecioListaProductos(float rangoMinimo, float rangoMaximo) {
+    List<Producto> productosFiltrados = new ArrayList<>();
 
+    for (Producto producto : listaProductos.values()) {
+        if (producto.getValor() >= rangoMinimo && producto.getValor() <= rangoMaximo) {
+            productosFiltrados.add(producto);
+        }
+    }
+
+    return productosFiltrados;
+}
     //punto 9: Implementar un método que retorne todos los productos registrados en la tienda, ordenados de menor a mayor según su precio.
 
     //punto 10: Implementar un método que identifique el producto con el precio más alto de la tienda.
@@ -181,6 +190,6 @@ public class Tienda {
     //Punto 11: Implementar un método que reciba el nombre de una ciudad y retorne
     // todos los clientes que residan en ella.
     // La búsqueda debe realizarse sin diferenciar entre mayúsculas y minúsculas.
-
-
 }
+
+
