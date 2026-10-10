@@ -158,6 +158,18 @@ public class Tienda {
     }
 
     // Punto 7: Implementar un método que reciba una categoría  y retorne todos los productos registrados que pertenezcan a ella.
+    public List<Producto> obtenerProductosCategoria(){
+        List<Producto> filtrados = new ArrayList<>();
+
+        for (Producto producto : listaProductos.values()) {
+            if (producto.getCategoria() == Categoria.ACCESORIOS || producto.getCategoria() == Categoria.CELULARES || producto.getCategoria() == Categoria.COMPONENTES || producto.getCategoria() == Categoria.COMPUTADORES || producto.getCategoria() == Categoria.VIDEO_JUEGOS) {
+                filtrados.add(producto);
+            }
+        }
+
+        return filtrados;
+    }
+    }
 
     //punto 8 : Implementar un método que reciba un precio mínimo y un precio máximo, y retorne los productos cuyo precio se encuentre dentro de ese rango, incluyendo ambos límites.
 
