@@ -14,4 +14,8 @@ public record Factura(String codigo, LocalDate fecha, double total,
         }
         return false;
     }
+    public boolean esNombreClienteYTieneIphone(String nombreCliente) {
+        return this.cliente.tieneNombre(nombreCliente) && tieneIphone();
+    }
 }
+

@@ -150,7 +150,7 @@ public class Tienda {
         List<Factura> resultado = new ArrayList<>();
 
         for (Factura factura : this.listaFacturas) {
-            if (factura.tieneIphone()) {
+            if (factura.esNombreClienteYTieneIphone(factura.cliente().getNombreCompleto())){
                 resultado.add(factura);
             }
         }

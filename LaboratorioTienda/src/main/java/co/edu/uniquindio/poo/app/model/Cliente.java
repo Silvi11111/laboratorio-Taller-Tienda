@@ -53,4 +53,8 @@ public class Cliente {
     public Tienda getOwnedByTienda() {
         return ownedByTienda;
     }
+
+    public boolean tieneNombre(String nombreBuscado) {
+        return this.nombreCompleto.toLowerCase().contains(nombreBuscado.toLowerCase());
+    }
 }
