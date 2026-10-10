@@ -29,4 +29,8 @@ public class DetalleFactura {
     public Factura getOwndByFactura() {
         return owndByFactura;
     }
+
+    public boolean esIphone() {
+        return this.producto.hayMarcaIphone();
+    }
 }

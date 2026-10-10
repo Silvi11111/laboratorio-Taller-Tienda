@@ -113,7 +113,7 @@ public class Tienda {
         LocalDate fechaConsultada=LocalDate.of(2026,10,7);
 
         for (Factura facturaAux:listaFacturas){
-            if (facturaAux.fecha().isEqual(fechaConsultada){
+            if (facturaAux.fecha().isEqual(fechaConsultada)){
                 listaClientes.add(facturaAux.cliente());
             }
         }
@@ -133,20 +133,35 @@ public class Tienda {
         return listaFactura;
     }
 
-    //punto 5:   Obtener las facturas donde se haya comprado un celular de marca Iphone 16 pro max
+    //punto 5:Obtener las facturas donde se haya comprado un celular de marca Iphone 16 pro max
+    public List<Factura> obtenerFacturaCelular(){
+        List<Factura> resultado = new ArrayList<>();
 
-    //punto 6:   Obtener las facturas que tenga un cliente
-    // donde su nombre sea juan y haya comprado un celular de marca Iphone 16 pro max
+        for (Factura factura : this.listaFacturas) {
+            if (factura.tieneIphone()) {
+                resultado.add(factura);
+            }
+        }
+        return resultado;
+    }
 
+    //punto 6:Obtener las facturas que tenga un cliente donde su nombre sea juan y haya comprado un celular de marca Iphone 16 pro max
+    public List<Factura> obtenerFacturaCelularNombre(){
+        List<Factura> resultado = new ArrayList<>();
 
-    // Punto 7: Implementar un método que reciba una categoría
-    //  y retorne todos los productos registrados que pertenezcan a ella.
+        for (Factura factura : this.listaFacturas) {
+            if (factura.tieneIphone()) {
+                resultado.add(factura);
+            }
+        }
+        return resultado;
+    }
 
-    //punto 8 : Implementar un método que reciba un precio mínimo y un precio máximo, y retorne
-    // los productos cuyo precio se encuentre dentro de ese rango, incluyendo ambos límites.
+    // Punto 7: Implementar un método que reciba una categoría  y retorne todos los productos registrados que pertenezcan a ella.
 
-    //punto 9: Implementar un método que retorne todos los productos
-    // registrados en la tienda, ordenados de menor a mayor según su precio.
+    //punto 8 : Implementar un método que reciba un precio mínimo y un precio máximo, y retorne los productos cuyo precio se encuentre dentro de ese rango, incluyendo ambos límites.
+
+    //punto 9: Implementar un método que retorne todos los productos registrados en la tienda, ordenados de menor a mayor según su precio.
 
     //punto 10: Implementar un método que identifique el producto con el precio más alto de la tienda.
     // Si no existen productos registrados, el método debe retornar un Optional vacío.

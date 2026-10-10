@@ -50,4 +50,8 @@ public class Producto {
     public Tienda getOwnedByTienda() {
         return ownedByTienda;
     }
+
+    public boolean hayMarcaIphone() {
+        return this.categoria == Categoria.CELULARES && this.nombre.toLowerCase().contains("Iphone 16 pro max");
+    }
 }
