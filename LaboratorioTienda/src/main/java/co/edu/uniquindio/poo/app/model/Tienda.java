@@ -197,9 +197,8 @@ public List<Producto> rangoPrecioListaProductos(float rangoMinimo, float rangoMa
                     }
                 }
             }
-
-            return productosOrdenados;
         }
+        return productosOrdenados;
     }
     //punto 10: Implementar un método que identifique el producto con el precio más alto de la tienda.
     // Si no existen productos registrados, el método debe retornar un Optional vacío.
@@ -214,13 +213,25 @@ public List<Producto> rangoPrecioListaProductos(float rangoMinimo, float rangoMa
                 productoMasAlto = producto;
             }
         }
+
         return Optional.of(productoMasAlto);
     }
-}
-
     //Punto 11: Implementar un método que reciba el nombre de una ciudad y retorne
     // todos los clientes que residan en ella.
     // La búsqueda debe realizarse sin diferenciar entre mayúsculas y minúsculas.
+    public List<String> obtenerNombreClientesPorCiudad(String ciudad) {
+        List<String> clientesEncontrados = new ArrayList<>();
+
+        for (Cliente cliente : listaClientes) {
+            if (cliente.getCiudadResidencia().equalsIgnoreCase(ciudad)) {
+                clientesEncontrados.add(cliente.getNombreCompleto());
+            }
+        }
+
+        return clientesEncontrados;
+    }
 }
+
+
 
 
