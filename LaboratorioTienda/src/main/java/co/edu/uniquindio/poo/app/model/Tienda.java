@@ -203,6 +203,20 @@ public List<Producto> rangoPrecioListaProductos(float rangoMinimo, float rangoMa
     }
     //punto 10: Implementar un método que identifique el producto con el precio más alto de la tienda.
     // Si no existen productos registrados, el método debe retornar un Optional vacío.
+    public Optional<Producto> obtenerProductoPrecioMasAlto() {
+        if (listaProductos == null || listaProductos.isEmpty()) {
+            return Optional.empty();
+        }
+        Producto productoMasAlto = listaProductos.get(0);
+
+        for (Producto producto : listaProductos.values()) {
+            if (producto.getValor() > productoMasAlto.getValor()) {
+                productoMasAlto = producto;
+            }
+        }
+        return Optional.of(productoMasAlto);
+    }
+}
 
     //Punto 11: Implementar un método que reciba el nombre de una ciudad y retorne
     // todos los clientes que residan en ella.
