@@ -183,7 +183,24 @@ public List<Producto> rangoPrecioListaProductos(float rangoMinimo, float rangoMa
     return productosFiltrados;
 }
     //punto 9: Implementar un método que retorne todos los productos registrados en la tienda, ordenados de menor a mayor según su precio.
+    public List<Producto> ordenarProductosMenorMayor() {
+        List<Producto> productosOrdenados = new ArrayList<>();
 
+        for (Producto producto : listaProductos.values()) {
+            for (int i = 0; i < productosOrdenados.size(); i++) {
+                for (int j = i + 1; j < productosOrdenados.size(); j++) {
+
+                    if (productosOrdenados.get(i).getValor() > productosOrdenados.get(j).getValor()) {
+                        Producto temp = productosOrdenados.get(i);
+                        productosOrdenados.set(i, productosOrdenados.get(j));
+                        productosOrdenados.set(j, temp);
+                    }
+                }
+            }
+
+            return productosOrdenados;
+        }
+    }
     //punto 10: Implementar un método que identifique el producto con el precio más alto de la tienda.
     // Si no existen productos registrados, el método debe retornar un Optional vacío.
 
